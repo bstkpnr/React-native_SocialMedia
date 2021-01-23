@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Image, TextInput, Alert, ActivityIndicator } from 'react-native'
 import { useSignIn } from './hooks'
-import { LoginButton,LoginUpButton } from './components'
+import { LoginButton, LoginUpButton } from './components'
 import { input_styles, image_styles } from './components/component_styles'
 import { signin_page } from './page_styles'
 
