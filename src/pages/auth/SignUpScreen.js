@@ -2,16 +2,16 @@ import React from 'react'
 import { View, Image, TextInput, Alert, ActivityIndicator } from 'react-native'
 import { input_styles } from './components/component_styles'
 import { signup_page } from './page_styles'
-import { useSign } from './hooks'
-import LoginButton from './components/LoginButton'
+import { useSignUp } from './hooks'
+import { LoginButton } from './components/'
 
 function SignUpScreen({ navigation }) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
-  const { loading, error, response, sign } = useSign()
+  const { loading, error, response, SignUp } = useSignUp()
 
   function signUp() {
-    sign(email, password)
+    SignUp(email, password)
   }
 
   if (response) {
@@ -30,6 +30,7 @@ function SignUpScreen({ navigation }) {
     Alert.alert('An error occurred when logging in', error.message)
   }
 
+  console.log(signup_page)
   return (
     <View style={signup_page.container}>
       <Image style={signup_page.logo} />

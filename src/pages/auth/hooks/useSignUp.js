@@ -1,7 +1,7 @@
 import React from 'react'
 import auth from '@react-native-firebase/auth'
 
-export function useSignUp() {
+function useSignUp() {
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState(null)
   const [response, setResponse] = React.useState(null)
@@ -24,3 +24,5 @@ export function useSignUp() {
 
   return { loading, error, response, SignUp }
 }
+
+export { useSignUp }
