@@ -8,15 +8,15 @@ function PostCard({ item }) {
   return (
     <View style={postcard_styles.container}>
       <View style={postcard_styles.userName}>
-        <TouchableOpacity>
-          <FontAwesome name="user-circle-o" size={15} />
+        <TouchableOpacity style={postcard_styles.icon}>
+          <FontAwesome name="user-circle-o" size={30} />
         </TouchableOpacity>
         <Text>{item.userName}</Text>
         <Text>{item.date}</Text>
       </View>
       <Text style={postcard_styles.text}>{item.text}</Text>
       <TouchableOpacity style={postcard_styles.saveIcon}>
-        <MaterialIcons name="save" size={15} />
+        <MaterialIcons name="save" size={30} />
       </TouchableOpacity>
     </View>
   )

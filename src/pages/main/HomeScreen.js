@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Button, FlatList } from 'react-native'
+import { View, Button, FlatList, Alert } from 'react-native'
 import auth from '@react-native-firebase/auth'
-import { PostCard } from './components'
+import { PostCard, Input } from './components'
 
 function quit() {
   return auth().signOut()
@@ -33,12 +33,16 @@ const renderItem = ({ item }) => {
 function HomeScreen() {
   return (
     <View>
-      <FlatList
-        data={dumm}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={renderItem}
-      />
-      <Button title="Çıkış" onPress={quit} />
+      <View>
+        <FlatList
+          data={dumm}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={renderItem}
+        />
+        <Button title="Çıkış" onPress={quit} color="#a0c4ff" />
+      </View>
+
+      <Input onText={(value) => console.log(value)} />
     </View>
   )
 }

@@ -1,5 +1,12 @@
 import React from 'react'
-import { View, Image, TextInput, Alert, ActivityIndicator, SafeAreaView } from 'react-native'
+import {
+  View,
+  Image,
+  TextInput,
+  Alert,
+  ActivityIndicator,
+  SafeAreaView
+} from 'react-native'
 import { input_styles } from './components/component_styles'
 import { signup_page } from './page_styles'
 import { useSignUp } from './hooks'
@@ -32,11 +39,8 @@ function SignUpScreen({ navigation }) {
 
   console.log(signup_page)
   return (
-
-
     <View style={signup_page.container}>
       <View style={input_styles.inputContainer}>
-
         <TextInput
           style={input_styles.input}
           placeholder="Enter your Email"

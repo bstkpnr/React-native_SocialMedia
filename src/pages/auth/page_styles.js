@@ -5,7 +5,7 @@ const signup_page = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     borderRadius: 15,
-    backgroundColor:'#eaf4f4',
+    backgroundColor: '#eaf4f4'
   }
 })
 const signin_page = StyleSheet.create({
