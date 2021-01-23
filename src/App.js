@@ -9,7 +9,7 @@ import auth from '@react-native-firebase/auth'
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 const hasUserAuth = auth().currentUser
-console.log(hasUserAuth)
+
 function App() {
   return (
     <NavigationContainer>
