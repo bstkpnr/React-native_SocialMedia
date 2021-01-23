@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, Image, TextInput, Alert, ActivityIndicator } from 'react-native'
+import { View, Image, TextInput, Alert, ActivityIndicator, SafeAreaView } from 'react-native'
 import { input_styles } from './components/component_styles'
 import { signup_page } from './page_styles'
 import { useSignUp } from './hooks'
-import { LoginButton } from './components/'
+import { LoginButton, LoginUpButton } from './components/'
 
 function SignUpScreen({ navigation }) {
   const [email, setEmail] = React.useState('')
@@ -32,21 +32,25 @@ function SignUpScreen({ navigation }) {
 
   console.log(signup_page)
   return (
+
+
     <View style={signup_page.container}>
-      <Image style={signup_page.logo} />
-      <TextInput
-        style={input_styles.input}
-        placeholder="Enter your Email"
-        autoCapitalize="none"
-        onChangeText={(value) => setEmail(value)}
-      />
-      <TextInput
-        style={input_styles.input}
-        placeholder="Enter your Password"
-        onChangeText={(value) => setPassword(value)}
-      />
-      <LoginButton title="Sign In" onPress={signUp} />
-      <LoginButton title="Back" onPress={() => navigation.goBack()} />
+      <View style={input_styles.inputContainer}>
+
+        <TextInput
+          style={input_styles.input}
+          placeholder="Enter your Email"
+          autoCapitalize="none"
+          onChangeText={(value) => setEmail(value)}
+        />
+        <TextInput
+          style={input_styles.input}
+          placeholder="Enter your Password"
+          onChangeText={(value) => setPassword(value)}
+        />
+        <LoginButton title="Submit" onPress={signUp} />
+        <LoginUpButton title="Back" onPress={() => navigation.goBack()} />
+      </View>
     </View>
   )
 }
