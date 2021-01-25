@@ -7,7 +7,6 @@ import dayjs from 'dayjs'
 import { relativeTime } from 'dayjs/locale/tr'
 
 function PostCard({ post }) {
-  console.log(post)
   return (
     <View style={postcard_styles.container}>
       <View style={postcard_styles.userName}>
@@ -17,9 +16,7 @@ function PostCard({ post }) {
         <Text>{post.username}</Text>
         <Text>{post.date}</Text>
       </View>
-      <Text style={postcard_styles.text}>
-        {dayjs.extend(relativeTime).locale('tr')}
-      </Text>
+      <Text style={postcard_styles.text}>{post.text}</Text>
       <TouchableOpacity style={postcard_styles.saveIcon}>
         <MaterialIcons name="save" size={30} />
       </TouchableOpacity>

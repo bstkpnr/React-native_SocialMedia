@@ -31,6 +31,7 @@ const postcard_styles = StyleSheet.create({
 })
 const textInput_style = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: 'row',
     position: 'absolute',
     backgroundColor: '#a0c4ff',
@@ -38,9 +39,17 @@ const textInput_style = StyleSheet.create({
     padding: 5,
     width: 350,
     height: 50,
-    top: deviceSize.height / 4,
+    left: deviceSize.width / 20,
+    top: deviceSize.height / 5,
     borderRadius: 10,
     justifyContent: 'center'
+  },
+  text: {
+    flex: 2
+  },
+  icon: {
+    flex: 1,
+    alignItems: 'center'
   }
 })
 

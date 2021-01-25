@@ -19,8 +19,7 @@ function HomeScreen() {
       .orderByChild('date')
       .on('value', (snapshot) => {
         const data = snapshot.val()
-        console.log(data);
-        handleData(data)
+        handleData(Object.values(data))
       })
   }
   function sendPost(post) {
@@ -43,14 +42,18 @@ function HomeScreen() {
   return (
     <View>
       <View>
-        <FlatList
-          data={postData}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={renderItem}
-        />
-        <Button title="Çıkış" onPress={quit} color="#a0c4ff" />
+        <View>
+          <FlatList
+            data={postData}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={renderItem}
+          />
+          <Button title="Çıkış" onPress={quit} color="#a0c4ff" />
+        </View>
       </View>
-      <Input holder="What are you thinking?" sendData={sendPost} />
+      <View>
+        <Input holder="What are you thinking?" sendData={sendPost} />
+      </View>
     </View>
   )
 }

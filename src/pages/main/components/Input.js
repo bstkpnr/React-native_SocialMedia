@@ -9,12 +9,16 @@ function Input({ holder, sendData }) {
     <View style={textInput_style.container}>
       <View>
         <TextInput
+          style={textInput_style.text}
           placeholder={holder}
           onChangeText={(value) => setText(value)}
         />
       </View>
-      <TouchableOpacity onPress={() => sendData(text)}>
-        <Ionicons name="send" size={15} color={'white'} />
+      <TouchableOpacity
+        style={textInput_style.icon}
+        onPress={() => sendData(text)}
+      >
+        <Ionicons name="send" size={25} color={'white'} />
       </TouchableOpacity>
     </View>
   )
