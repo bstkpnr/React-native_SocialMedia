@@ -2,47 +2,55 @@ import React from 'react'
 import { View, Button, FlatList, Alert } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import { PostCard, Input } from './components'
-
-function quit() {
-  return auth().signOut()
-}
-const dumm = [
-  {
-    id: 1,
-    userName: 'berkay',
-    text: 'Bir söz paylaştık.',
-    date: 'dakika önce'
-  },
-  {
-    id: 2,
-    userName: 'beste',
-    text: 'Bir söz yazdı.',
-    date: 'saat önce'
-  },
-  {
-    id: 3,
-    userName: 'abdi',
-    text: 'Söz bir paylaştı',
-    data: 'ay önce'
-  }
-]
-const renderItem = ({ item }) => {
-  return <PostCard item={item} />
-}
+import database from '@react-native-firebase/database'
+import dayjs from 'dayjs'
 
 function HomeScreen() {
+  const [postData, handleData] = React.useState([])
+
+  function quit() {
+    auth()
+      .signOut()
+      .then((response) => Alert.alert('Çıkış yapılıyor', response))
+  }
+  function readData() {
+    database()
+      .ref('/all_post')
+      .orderByChild('date')
+      .on('value', (snapshot) => {
+        const data = snapshot.val()
+        console.log(data);
+        handleData(data)
+      })
+  }
+  function sendPost(post) {
+    const mail = auth().currentUser.email
+    const username = mail.substr(0, mail.indexOf('@'))
+    const postObj = {
+      username: username,
+      text: post,
+      date: dayjs()
+    }
+    database().ref('/all_post').push(postObj)
+  }
+  React.useEffect(() => {
+    readData()
+  }, [])
+
+  const renderItem = ({ item }) => {
+    return <PostCard post={item} />
+  }
   return (
     <View>
       <View>
         <FlatList
-          data={dumm}
+          data={postData}
           keyExtractor={(_, index) => index.toString()}
           renderItem={renderItem}
         />
         <Button title="Çıkış" onPress={quit} color="#a0c4ff" />
       </View>
-
-      <Input onText={(value) => console.log(value)} />
+      <Input holder="What are you thinking?" sendData={sendPost} />
     </View>
   )
 }
