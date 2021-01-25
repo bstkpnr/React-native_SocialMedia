@@ -18,7 +18,12 @@ const postcard_styles = StyleSheet.create({
     paddingHorizontal: 5,
     backgroundColor: '#a0c4ff'
   },
-  text: { paddingLeft: 5, paddingVertical: 10, backgroundColor: '#fff' },
+  text: {
+    flex: 1,
+    paddingLeft: 5,
+    paddingVertical: 10,
+    backgroundColor: '#fff'
+  },
   date: {
     paddingLeft: 5,
     paddingVertical: 10
@@ -26,7 +31,7 @@ const postcard_styles = StyleSheet.create({
   saveIcon: {
     alignSelf: 'flex-end',
     paddingRight: 15,
-    backgroundColor: '#f0efeb'
+    backgroundColor: '#fff'
   }
 })
 const textInput_style = StyleSheet.create({

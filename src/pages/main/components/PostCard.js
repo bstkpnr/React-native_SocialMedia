@@ -3,8 +3,6 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { postcard_styles } from './component_styles'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import dayjs from 'dayjs'
-import { relativeTime } from 'dayjs/locale/tr'
 
 function PostCard({ post }) {
   return (

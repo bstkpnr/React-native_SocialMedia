@@ -13,16 +13,22 @@ function HomeScreen() {
       .signOut()
       .then((response) => Alert.alert('Çıkış yapılıyor', response))
   }
+
   function readData() {
     database()
       .ref('/all_post')
       .orderByChild('date')
       .on('value', (snapshot) => {
         const data = snapshot.val()
+        if (!data) {
+          return null
+        }
         handleData(Object.values(data))
       })
   }
+
   function sendPost(post) {
+    const timeline = database().ref('/timeline')
     const mail = auth().currentUser.email
     const username = mail.substr(0, mail.indexOf('@'))
     const postObj = {
@@ -30,8 +36,9 @@ function HomeScreen() {
       text: post,
       date: dayjs()
     }
-    database().ref('/all_post').push(postObj)
+    timeline.push(postObj, () => console.log('Tamamlandı'))
   }
+
   React.useEffect(() => {
     readData()
   }, [])
