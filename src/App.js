@@ -8,12 +8,30 @@ import auth from '@react-native-firebase/auth'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
-const hasUserAuth = auth().currentUser
 
 function App() {
+  const [initializing, setInitializing] = React.useState(true)
+  const [user, setUser] = React.useState()
+
+  function onAuthStateChanged(user) {
+    setUser(user)
+    if (initializing) {
+      setInitializing(false)
+    }
+  }
+
+  React.useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged)
+    return subscriber // unsubscribe on unmount
+  })
+
+  if (initializing) {
+    return null
+  }
+
   return (
     <NavigationContainer>
-      {hasUserAuth ? (
+      {user ? (
         <Tab.Navigator>
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Favorite" component={FavoriteScreen} />

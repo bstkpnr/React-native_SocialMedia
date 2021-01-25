@@ -26,7 +26,7 @@ function SignInScreen({ navigation }) {
     )
   }
   if (error) {
-    Alert.alert('An error occurred while creating an account', error.message)
+    Alert.alert('An error occurred when logging in', error.message)
   }
 
   return (
