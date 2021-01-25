@@ -16,10 +16,12 @@ function PostCard({ post }) {
         <Text>{post.username}</Text>
         <Text>{post.date}</Text>
       </View>
-      <Text style={postcard_styles.text}>{post.text}</Text>
-      <TouchableOpacity style={postcard_styles.saveIcon}>
-        <MaterialIcons name="save" size={30} />
-      </TouchableOpacity>
+      <View style={postcard_styles.containerText}>
+        <Text style={postcard_styles.text}>{post.text}</Text>
+        <TouchableOpacity style={postcard_styles.saveIcon}>
+          <MaterialIcons name="save" size={30} />
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
