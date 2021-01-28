@@ -1,18 +1,16 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import database from '@react-native-firebase/database'
-import { useEffect } from 'react'
-import { FlatList } from 'react-native-gesture-handler'
 import { PostCard } from './components'
 
-const currentUserId = auth().currentUser.uid
 function FavoriteScreen() {
   const [favori, setFavori] = React.useState([])
 
-  useEffect(() => favoriRead(), [])
+  React.useEffect(() => favoriRead(), [])
 
   function favoriRead() {
+    const currentUserId = auth().currentUser.uid
     database()
       .ref(`user_saved/${currentUserId}`)
       .on('value', (snapShot) => {

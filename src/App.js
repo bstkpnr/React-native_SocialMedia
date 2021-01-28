@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator()
 
 function App() {
   const [initializing, setInitializing] = React.useState(true)
-  const [user, setUser] = React.useState()
+  const [hasUserAuth, setUser] = React.useState()
 
   function onAuthStateChanged(user) {
     setUser(user)
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <NavigationContainer>
-      {user ? (
+      {hasUserAuth ? (
         <Tab.Navigator>
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Favorite" component={FavoriteScreen} />
