@@ -3,8 +3,18 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { postcard_styles } from './component_styles'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import database from '@react-native-firebase/database'
 
 function PostCard({ post }) {
+  console.log(post)
+  function onClick() {
+    database()
+      .ref(`user_saved/${post}`)
+      .on('value', (snapShot) => {
+        return
+      })
+  }
+
   return (
     <View style={postcard_styles.container}>
       <View style={postcard_styles.userName}>
@@ -16,7 +26,7 @@ function PostCard({ post }) {
       </View>
       <View style={postcard_styles.containerText}>
         <Text style={postcard_styles.text}>{post.text}</Text>
-        <TouchableOpacity style={postcard_styles.saveIcon}>
+        <TouchableOpacity style={postcard_styles.saveIcon} onPress={onClick}>
           <MaterialIcons name="save" size={30} />
         </TouchableOpacity>
       </View>

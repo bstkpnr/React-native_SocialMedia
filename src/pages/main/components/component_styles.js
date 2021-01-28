@@ -30,7 +30,9 @@ const postcard_styles = StyleSheet.create({
   },
   saveIcon: {
     alignSelf: 'flex-end',
-    paddingRight: 15,
+    paddingRight: 15
+  },
+  textContainer: {
     backgroundColor: '#fff'
   }
 })
