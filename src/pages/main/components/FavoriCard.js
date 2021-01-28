@@ -11,17 +11,10 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 
 dayjs.extend(relativeTime)
 
-function PostCard({ post }) {
-  const id = auth().currentUser.uid
-  function onClick() {
-    const newPostKey = database().ref().child(`/user_saved/${id}`).push()
-    if (!post.saveId) {
-      post.saveId = newPostKey.key
-      newPostKey.set(post)
-      Alert.alert('Kaydedildi!')
-    } else {
-      Alert.alert('Mesaj zaten Kaydedilmiştir!')
-    }
+function FavoriCard({ post }) {
+  const userid = auth().currentUser.uid
+  function onDelete() {
+    database().ref(`user_saved/${userid}/${post.saveId}`).remove()
   }
 
   return (
@@ -30,17 +23,17 @@ function PostCard({ post }) {
         <TouchableOpacity style={postcard_styles.icon}>
           <FontAwesome name="user-circle-o" size={30} />
         </TouchableOpacity>
-        <Text>{post.username.split('@')[0]}</Text>
+        <Text>{post.username.substr(0, post.username.indexOf('@'))}</Text>
         <Text>{dayjs(post.date).locale('tr').fromNow()}</Text>
       </View>
       <View style={postcard_styles.containerText}>
         <Text style={postcard_styles.text}>{post.text}</Text>
-        <TouchableOpacity style={postcard_styles.saveIcon} onPress={onClick}>
-          <MaterialIcons name="save" size={30} />
+        <TouchableOpacity onPress={onDelete}>
+          <MaterialIcons name="delete" size={30} />
         </TouchableOpacity>
       </View>
     </View>
   )
 }
 
-export { PostCard }
+export { FavoriCard }

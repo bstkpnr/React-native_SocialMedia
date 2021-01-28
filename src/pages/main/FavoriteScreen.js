@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, FlatList } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import database from '@react-native-firebase/database'
-import { PostCard } from './components'
+import { FavoriCard } from './components'
 
 function FavoriteScreen() {
   const [favori, setFavori] = React.useState([])
@@ -22,7 +22,7 @@ function FavoriteScreen() {
       })
   }
   const renderItem = ({ item }) => {
-    return <PostCard post={item} />
+    return <FavoriCard post={item} />
   }
 
   return (
