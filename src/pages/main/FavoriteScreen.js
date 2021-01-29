@@ -27,7 +27,6 @@ function FavoriteScreen() {
 
   return (
     <View>
-      <Text>Favorite Page</Text>
       <FlatList
         data={favori}
         keyExtractor={(_, index) => index.toString()}
