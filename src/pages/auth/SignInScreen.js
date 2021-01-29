@@ -8,7 +8,7 @@ import { signin_page } from './page_styles'
 function SignInScreen({ navigation }) {
   const [mail, setMail] = React.useState(null)
   const [password, setPassword] = React.useState(null)
-  const { loading, SignIn, error } = useSignIn()
+  const { loading, SignIn, error, errorDelete } = useSignIn()
 
   function signUp() {
     navigation.navigate('SignUp')
@@ -27,6 +27,7 @@ function SignInScreen({ navigation }) {
   }
   if (error) {
     Alert.alert('An error occurred when logging in', error.message)
+    errorDelete()
   }
 
   return (

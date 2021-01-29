@@ -21,8 +21,10 @@ function useSignUp() {
         setError(serverError)
       })
   }
-
-  return { loading, error, response, SignUp }
+  function errorDelete() {
+    setError(null)
+  }
+  return { loading, error, response, errorDelete, SignUp }
 }
 
 export { useSignUp }

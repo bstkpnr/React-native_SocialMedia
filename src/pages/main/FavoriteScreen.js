@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, FlatList } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import database from '@react-native-firebase/database'
 import { FavoriCard } from './components'
@@ -7,7 +7,7 @@ import { FavoriCard } from './components'
 function FavoriteScreen() {
   const [favori, setFavori] = React.useState([])
 
-  React.useEffect(() => favoriRead(), [])
+  React.useEffect(() => favoriRead())
 
   function favoriRead() {
     const currentUserId = auth().currentUser.uid
@@ -21,6 +21,7 @@ function FavoriteScreen() {
         setFavori(Object.values(data))
       })
   }
+
   const renderItem = ({ item }) => {
     return <FavoriCard post={item} />
   }

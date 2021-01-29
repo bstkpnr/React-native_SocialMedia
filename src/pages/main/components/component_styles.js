@@ -1,7 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native'
 
 const deviceSize = Dimensions.get('window')
-console.log(deviceSize)
 
 const postcard_styles = StyleSheet.create({
   container: {

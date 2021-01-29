@@ -8,7 +8,7 @@ import { LoginButton, LoginUpButton } from './components/'
 function SignUpScreen({ navigation }) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
-  const { loading, error, response, SignUp } = useSignUp()
+  const { loading, error, response, errorDelete, SignUp } = useSignUp()
 
   function signUp() {
     SignUp(email, password)
@@ -28,6 +28,7 @@ function SignUpScreen({ navigation }) {
 
   if (error) {
     Alert.alert('An error occurred while creating an account', error.message)
+    errorDelete()
   }
   return (
     <View style={signup_page.container}>
