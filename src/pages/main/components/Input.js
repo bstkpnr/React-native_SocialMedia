@@ -11,6 +11,7 @@ function Input({ holder, sendData }) {
         <TextInput
           style={textInput_style.text}
           placeholder={holder}
+          placeholderTextColor="#FFF"
           onChangeText={(value) => setText(value)}
         />
       </View>

@@ -19,9 +19,9 @@ const button_styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold'
   }
-});
-const button_styles_up=StyleSheet.create({
-  container:{
+})
+const button_styles_up = StyleSheet.create({
+  container: {
     padding: 10,
     margin: 15,
     borderRadius: 10,
@@ -30,12 +30,11 @@ const button_styles_up=StyleSheet.create({
     width: '55%',
     alignItems: 'center'
   },
-  title:{
+  title: {
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
-    color:'#abc4ff'
-
+    color: '#abc4ff'
   }
 })
 const input_styles = StyleSheet.create({
@@ -47,19 +46,18 @@ const input_styles = StyleSheet.create({
     height: 50,
     width: 300
   },
-  input:{
+  input: {
     backgroundColor: '#dee2e6',
     padding: 10,
     margin: 10,
     borderRadius: 10,
     height: 50,
     width: 300,
-    alignItems:'center'
-
+    alignItems: 'center'
   },
-  inputContainer:{
-    flexDirection:'column',
-    alignItems:'center',
+  inputContainer: {
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 })
 const image_styles = StyleSheet.create({
@@ -72,4 +70,4 @@ const image_styles = StyleSheet.create({
     alignItems: 'center'
   }
 })
-export { button_styles, input_styles, image_styles ,button_styles_up}
+export { button_styles, input_styles, image_styles, button_styles_up }

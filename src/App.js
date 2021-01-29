@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { SignInScreen, SignUpScreen } from './pages/auth/'
 import { HomeScreen, FavoriteScreen } from './pages/main'
 import auth from '@react-native-firebase/auth'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -32,7 +33,17 @@ function App() {
   return (
     <NavigationContainer>
       {hasUserAuth ? (
-        <Tab.Navigator>
+        <Tab.Navigator
+          initialRouteName="Home"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ color }) => generateIcon(color, route),
+            tabBarLabel: () => null
+          })}
+          tabBarOptions={{
+            activeTintColor: '#1DA1F2',
+            inactiveTintColor: 'gray'
+          }}
+        >
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Favorite" component={FavoriteScreen} />
         </Tab.Navigator>
@@ -52,6 +63,23 @@ function App() {
       )}
     </NavigationContainer>
   )
+}
+function generateIcon(color, route) {
+  let iconName
+
+  switch (route.name) {
+    case 'Home':
+      iconName = 'home'
+      break
+
+    case 'Favorite':
+      iconName = 'heart'
+      break
+
+    default:
+      break
+  }
+  return <Ionicons name={iconName} color={color} size={30} />
 }
 
 export default App

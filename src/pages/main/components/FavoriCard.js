@@ -29,7 +29,7 @@ function FavoriCard({ post }) {
       <View style={postcard_styles.containerText}>
         <Text style={postcard_styles.text}>{post.text}</Text>
         <TouchableOpacity onPress={onDelete}>
-          <MaterialIcons name="delete" size={30} />
+          <MaterialIcons name="delete" size={30} color={'#D9D9D9'} />
         </TouchableOpacity>
       </View>
     </View>

@@ -28,15 +28,19 @@ function PostCard({ post }) {
     <View style={postcard_styles.container}>
       <View style={postcard_styles.userName}>
         <TouchableOpacity style={postcard_styles.icon}>
-          <FontAwesome name="user-circle-o" size={30} />
+          <FontAwesome name="user-circle-o" size={30} color={'#D9D9D9'} />
         </TouchableOpacity>
-        <Text>{post.username.split('@')[0]}</Text>
-        <Text>{dayjs(post.date).locale('tr').fromNow()}</Text>
+        <Text style={postcard_styles.userNametext}>
+          {post.username.split('@')[0]}
+        </Text>
+        <Text style={postcard_styles.dateText}>
+          {dayjs(post.date).locale('tr').fromNow()}
+        </Text>
       </View>
       <View style={postcard_styles.containerText}>
         <Text style={postcard_styles.text}>{post.text}</Text>
         <TouchableOpacity style={postcard_styles.saveIcon} onPress={onClick}>
-          <MaterialIcons name="save" size={30} />
+          <MaterialIcons name="save" size={30} color={'#D9D9D9'} />
         </TouchableOpacity>
       </View>
     </View>

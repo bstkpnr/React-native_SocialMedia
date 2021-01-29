@@ -4,19 +4,13 @@ import auth from '@react-native-firebase/auth'
 import { PostCard, Input } from './components'
 import database from '@react-native-firebase/database'
 import dayjs from 'dayjs'
+import { text_style, list_style } from './components/component_styles'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 function HomeScreen() {
   const [postData, handleData] = React.useState([])
 
-  React.useEffect(() => readData(), [handleData])
-
-  function quit() {
-    auth()
-      .signOut()
-      .then((response) => Alert.alert('Çıkış yapılıyor', response))
-  }
-
-  function readData() {
+  React.useEffect(() => {
     database()
       .ref('/timeline')
       .orderByChild('date')
@@ -27,6 +21,12 @@ function HomeScreen() {
         }
         handleData(Object.values(data))
       })
+  })
+
+  function quit() {
+    auth()
+      .signOut()
+      .then((response) => Alert.alert('Çıkış yapılıyor', response))
   }
 
   function sendPost(post) {
@@ -46,14 +46,14 @@ function HomeScreen() {
   return (
     <View>
       <View>
-        <View style={{ height: 370 }}>
+        <View style={list_style.container}>
           <FlatList
             data={postData}
             keyExtractor={(_, index) => index.toString()}
             renderItem={renderItem}
           />
-          <TouchableOpacity style={{}} onPress={quit}>
-            <Text>Çıkış Yap</Text>
+          <TouchableOpacity style={text_style.textContainer} onPress={quit}>
+            <FontAwesome name="sign-out" size={30} color={'#D9D9D9'} />
           </TouchableOpacity>
         </View>
       </View>
