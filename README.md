@@ -3,13 +3,15 @@
    
 ## This is homework for Kodluyoruz's React-Native Bootcamp
 <br/>
-We are developers from **Kodluyoruz Bootcamp** and we are trying a few beauty things
+We are developers from Kodluyoruz Bootcamp and we are trying a few beauty things
+<br/>
 
 
 
 <img src="./src/assets/project.gif" />
 
 ### We are here for you!
+
 [Beste Tokpınar's Github Page](https://github.com/bstkpnr "Beste Tokpınar's Github Page")
 
 
